@@ -48,37 +48,37 @@ cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=ON -DGUIDANCE_LNS=OFF -DFLOW
 cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=ON -DGUIDANCE_LNS=OFF -DFLOW_GUIDANCE=OFF -DINIT_PP=OFF -DRELAX=100 -DOBJECTIVE=1 -DFOCAL_SEARCH=OFF -DCMAKE_BUILD_TYPE=RELEASE
 ```
 
-**GP<sub>_v</sub>-R100**
+**GP<sub>v</sub>-R100**
 ```
 cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=ON -DGUIDANCE_LNS=OFF -DFLOW_GUIDANCE=OFF -DINIT_PP=ON -DRELAX=100 -DOBJECTIVE=2 -DFOCAL_SEARCH=OFF -DCMAKE_BUILD_TYPE=RELEASE
 ```
 
-**GP<sub>_v</sub>-R100-F2**
+**GP<sub>v</sub>-R100-F2**
 ```
 cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=ON -DGUIDANCE_LNS=OFF -DFLOW_GUIDANCE=OFF -DINIT_PP=ON -DRELAX=100 -DOBJECTIVE=2 -DFOCAL_SEARCH=2 -DCMAKE_BUILD_TYPE=RELEASE
 ```
 
-**GP<sub>_svc</sub>-R100**
+**GP<sub>svc</sub>-R100**
 ```
 cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=ON -DGUIDANCE_LNS=OFF -DFLOW_GUIDANCE=OFF -DINIT_PP=ON -DRELAX=100 -DOBJECTIVE=3 -DFOCAL_SEARCH=OFF -DCMAKE_BUILD_TYPE=RELEASE
 ```
 
-**GP<sub>_sui</sub>-R100**
+**GP<sub>sui</sub>-R100**
 ```
 cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=ON -DGUIDANCE_LNS=OFF -DFLOW_GUIDANCE=OFF -DINIT_PP=ON -DRELAX=100 -DOBJECTIVE=5 -DFOCAL_SEARCH=OFF -DCMAKE_BUILD_TYPE=RELEASE
 ```
 
-**GP<sub>_sui</sub>-R100-F2**
+**GP<sub>sui</sub>-R100-F2**
 ```
 cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=ON -DGUIDANCE_LNS=OFF -DFLOW_GUIDANCE=OFF -DINIT_PP=ON -DRELAX=100 -DOBJECTIVE=5 -DFOCAL_SEARCH=2 -DCMAKE_BUILD_TYPE=RELEASE
 ```
 
-**TH<sub>_v<sub>**
+**TH<sub>v<sub>**
 ```
 cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=OFF -DGUIDANCE_LNS=OFF -DFLOW_GUIDANCE=ON -DINIT_PP=OFF -DRELAX=OFF -DOBJECTIVE=2 -DFOCAL_SEARCH=OFF -DCMAKE_BUILD_TYPE=RELEASE
 ```
 
-**TH<sub>_v</sub>-R100**
+**TH<sub>v</sub>-R100**
 ```
 cmake -B guided-pibt-build ./guided-pibt -DGUIDANCE=OFF -DGUIDANCE_LNS=OFF -DFLOW_GUIDANCE=ON -DINIT_PP=OFF -DRELAX=100 -DOBJECTIVE=2 -DFOCAL_SEARCH=OFF -DCMAKE_BUILD_TYPE=RELEASE
 ```
