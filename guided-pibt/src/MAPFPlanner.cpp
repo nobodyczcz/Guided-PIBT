@@ -115,7 +115,7 @@ void MAPFPlanner::plan(int time_limit,vector<Action> & actions)
             occupied.at(prev_states[i].location) = true;
         }
 
-        if(prev_states[i].location == trajLNS.tasks[i])
+        if(task_change[i])
             p[i] = p_copy[i];
         else
             p[i] = p[i]+1;
@@ -184,13 +184,13 @@ void MAPFPlanner::plan(int time_limit,vector<Action> & actions)
             // cout<<"Init dist to path"<<endl;
             init_dist_table(trajLNS,traffic, RELAX);
         }
-        else{
-            for (int i = 0; i < env->num_of_agents;i++){
-                if (task_change[i]&& updated.find(i) == updated.end()){
-                    update_dist_2_path(trajLNS, i,traffic);
-                }
+
+        for (int i = 0; i < trajLNS.dist2path_inited;i++){
+            if (task_change[i]&& updated.find(i) == updated.end()){
+                update_dist_2_path(trajLNS, i,traffic);
             }
         }
+        
     #else
 
         // cout<<"init flow guidance heuristic for all agents."<<endl;
