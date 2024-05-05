@@ -321,28 +321,47 @@ void select_most_expensive(TrajLNS& lns, std::vector<int> & agents){
     int agent = most_op_flow_i == -1? most_cost_i : most_op_flow_i;
     std::vector<int> congest_agents;
 
-    if (agent != -1){
+    if (agent != -1) {
+        agents[0]=agent;
         lns.tabu_list[agent] = true;
         lns.num_in_tablu += 1;
 
         Traj& path = lns.trajs[agent];
-        for (int i = 0; i < path.size(); i++){
+        int most_congested_loc=-1;
+        size_t most_congested_occupation=0;
+        for (int i = 0; i < path.size(); i++) {
             int loc = path[i];
-            if (lns.occupations[loc].size() > loc){
-                congest_agents.clear();
-                congest_agents.insert(congest_agents.begin(),lns.occupations[loc].begin(),lns.occupations[loc].end());
+            if (lns.occupations[loc].size() > most_congested_occupation){
+                most_congested_occupation = lns.occupations[loc].size();
+                most_congested_loc = loc;
             }
+        }
+        
+        if (most_congested_loc!=-1) {
+            congest_agents.insert(congest_agents.begin(),lns.occupations[most_congested_loc].begin(),lns.occupations[most_congested_loc].end());
         }
     }
 
-    int i = 0;
-    while ( i < lns.group_size){
-        if (i < congest_agents.size()){
-            agents[i] = congest_agents[i];
+    int i = 1;
+    int j = 0;
+    while (i < lns.group_size) {
+        if (j < congest_agents.size()){
+            if (lns.tabu_list[congest_agents[j]] || congest_agents[j] == agents[0]){
+                j++;
+                continue;
+            }
+            agents[i] = congest_agents[j];
+            lns.tabu_list[agents[i]] = true;
+            lns.num_in_tablu += 1;
             i++;
+            j++;
             continue;
+        } else {
+            break;
         }
+    }
 
+    while ( i < lns.group_size){
         int index = rand() % lns.env->num_of_agents;
         //check if index is already in agents
         bool in = false;
@@ -356,7 +375,9 @@ void select_most_expensive(TrajLNS& lns, std::vector<int> & agents){
             continue;
         }
         agents[i] = index;
-        i += 1;
+        lns.tabu_list[agents[i]] = true;
+        lns.num_in_tablu += 1;
+        i++;
     }
 }
 
